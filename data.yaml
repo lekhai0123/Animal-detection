@@ -1,0 +1,8 @@
+# data.yaml
+path: WAID
+train: images/train
+val: images/valid
+test: images/test
+
+names: [sheep,cattle,seal,camelus,kiang,zebra]   
+nc: 6                                            
