@@ -5,13 +5,13 @@ data: data.yaml
 epochs: 100
 time: null
 patience: 100
-batch: 4
+batch: 32
 imgsz: 640
 save: true
 save_period: -1
 cache: false
 device: '0'
-workers: 0
+workers: 4
 project: runs_yolo
 name: train_waid_cfg
 exist_ok: true
@@ -102,4 +102,4 @@ auto_augment: randaugment
 erasing: 0.4
 cfg: null
 tracker: botsort.yaml
-save_dir: D:\Khai\oop\animal\WAID\runs_yolo\train_waid_cfg
+save_dir: runs_yolo/train_waid_cfg
