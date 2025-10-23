@@ -10,7 +10,7 @@ if __name__ == "__main__":
         imgsz=640,         
         epochs=100,           
         batch=32,
-        optimizer="SGD",     
+        optimizer="SOAP",     
         lr0=0.01,             
         lrf=0.01,             
         momentum=0.937,       

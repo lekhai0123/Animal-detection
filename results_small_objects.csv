@@ -1,0 +1,3 @@
+Model,Small_Object_Threshold(px),Precision,Recall,F1,TP,FP,FN
+train_waid_cfg,50,0.8933,0.9302,0.9114,15327,1831,1150
+train_waid_p2,50,0.8939,0.933,0.913,15409,1829,1107
