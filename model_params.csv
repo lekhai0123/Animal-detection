@@ -1,3 +1,0 @@
-Model,Path,Total_Params(M)
-train_waid_cfg,runs_yolo\train_waid_cfg\weights\best.pt,2.569
-train_waid_p2,runs_yolo\train_waid_p2\weights\best.pt,2.586

@@ -1,0 +1,24 @@
+# ELNet ablation + EDown, thay A2C2f bằng DIMB_C3k2
+nc: 80
+scales:
+  n: [0.50, 0.25, 1024]
+
+backbone:
+  - [-1, 1, Conv, [64, 3, 2]]
+  - [-1, 1, Conv, [128, 3, 2]]
+  - [-1, 2, C3k2, [256, False, 0.25]]
+  - [-1, 1, EDown, [256]]          # thay Conv stride=2
+  - [-1, 2, C3k2, [512, False, 0.25]]
+  - [-1, 1, EDown, [512]]          # thay Conv stride=2
+  - [-1, 2, DIMB_C3k2, [512, True]] # thay A2C2f
+
+head:
+  - [-1, 1, nn.Upsample, [None, 2, "nearest"]]
+  - [[-1, 4], 1, Concat, [1]]
+  - [-1, 1, DIMB_C3k2, [256, False]]
+
+  - [-1, 1, nn.Upsample, [None, 2, "nearest"]]
+  - [[-1, 2], 1, Concat, [1]]
+  - [-1, 1, DIMB_C3k2, [128, False]]
+
+  - [[-1, 9, 6], 1, Detect, [nc]]

@@ -1,0 +1,14 @@
+=== Bắt đầu huấn luyện models/elnet/elnet12n_full.yaml ===
+[DIMB_C3k2] i/o: 32->64, n=1, e=0.5, c_=32, shortcut=False
+[DIMB_C3k2] i/o: 64->128, n=1, e=0.5, c_=64, shortcut=False
+[DIMB_C3k2] i/o: 128->128, n=1, e=0.5, c_=64, shortcut=True
+[DIMB_C3k2] i/o: 256->64, n=1, e=0.5, c_=32, shortcut=False
+[DIMB_C3k2] i/o: 128->32, n=1, e=0.5, c_=16, shortcut=False
+[DEBUG] args = [[32, 64, 128], 80]
+[DIMB_C3k2] i/o: 32->64, n=1, e=0.5, c_=32, shortcut=False
+[DIMB_C3k2] i/o: 64->128, n=1, e=0.5, c_=64, shortcut=False
+[DIMB_C3k2] i/o: 128->128, n=1, e=0.5, c_=64, shortcut=True
+[DIMB_C3k2] i/o: 256->64, n=1, e=0.5, c_=32, shortcut=False
+[DIMB_C3k2] i/o: 128->32, n=1, e=0.5, c_=16, shortcut=False
+[DEBUG] args = [[32, 64, 128], 6]
+[K[34m[1mtrain: [0mScanning C:\AI\Animal-detection\WAID\labels\train.cache... 10056 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 10056/10056  0.0s[K[34m[1mtrain: [0mScanning C:\AI\Animal-detection\WAID\labels\train.cache... 10056 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 10056/10056  0.0s

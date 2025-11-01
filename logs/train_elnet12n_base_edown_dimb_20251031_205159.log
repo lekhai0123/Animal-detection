@@ -1,0 +1,6 @@
+=== Bắt đầu huấn luyện models/elnet/elnet12n_base_edown_dimb.yaml ===
+[DIMB_C3k2] i/o: 32->64, n=1, e=0.5, c_=32, shortcut=False
+[DIMB_C3k2] i/o: 64->128, n=1, e=0.5, c_=64, shortcut=False
+[DIMB_C3k2] i/o: 128->128, n=1, e=0.5, c_=64, shortcut=True
+[DIMB_C3k2] i/o: 256->64, n=1, e=0.5, c_=32, shortcut=False
+[DIMB_C3k2] i/o: 128->32, n=1, e=0.5, c_=16, shortcut=False

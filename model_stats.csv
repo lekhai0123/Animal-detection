@@ -1,0 +1,5 @@
+Model Name,Folder,Parameters (M),FLOPs (GFLOPs)
+Base,train_waid_cfg,2.569,3.243
+Add P2,train_waid_p2,2.586,4.527
+Remove P5,train_waid_r_p5,0.757,2.407
+Remove P5 + SSFF/DFE/CPAM,train_waid_r_p5_ssff_dfe_cpam,0.832,2.961

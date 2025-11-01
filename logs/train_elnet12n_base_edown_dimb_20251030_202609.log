@@ -1,0 +1,48 @@
+=== Bắt đầu huấn luyện models/elnet/elnet12n_base_edown_dimb.yaml ===
+[DIMB_C3k2] i/o: 32->64, n=1, e=0.5, c_=32, shortcut=False
+[DIMB_C3k2] i/o: 64->128, n=1, e=0.5, c_=64, shortcut=False
+[DIMB_C3k2] i/o: 128->128, n=1, e=0.5, c_=64, shortcut=True
+[DIMB_C3k2] i/o: 256->64, n=1, e=0.5, c_=32, shortcut=False
+[DIMB_C3k2] i/o: 128->32, n=1, e=0.5, c_=16, shortcut=False
+[DIMB_C3k2] i/o: 32->64, n=1, e=0.5, c_=32, shortcut=False
+[DIMB_C3k2] i/o: 64->128, n=1, e=0.5, c_=64, shortcut=False
+[DIMB_C3k2] i/o: 128->128, n=1, e=0.5, c_=64, shortcut=True
+[DIMB_C3k2] i/o: 256->64, n=1, e=0.5, c_=32, shortcut=False
+[DIMB_C3k2] i/o: 128->32, n=1, e=0.5, c_=16, shortcut=False
+[K[34m[1mtrain: [0mScanning C:\AI\Animal-detection\WAID\labels\train.cache... 10056 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 10056/10056  0.0s[K[34m[1mtrain: [0mScanning C:\AI\Animal-detection\WAID\labels\train.cache... 10056 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 10056/10056  0.0s
+Traceback (most recent call last):
+  File "C:\AI\Animal-detection\train_elnet12n_base_edown_dimb.py", line 53, in <module>
+    main()
+  File "C:\AI\Animal-detection\train_elnet12n_base_edown_dimb.py", line 33, in main
+    results = model.train(
+  File "C:\Users\Khai\miniconda3\envs\yolo\lib\site-packages\ultralytics\engine\model.py", line 800, in train
+    self.trainer.train()
+  File "C:\Users\Khai\miniconda3\envs\yolo\lib\site-packages\ultralytics\engine\trainer.py", line 240, in train
+    self._do_train()
+  File "C:\Users\Khai\miniconda3\envs\yolo\lib\site-packages\ultralytics\engine\trainer.py", line 361, in _do_train
+    self._setup_train()
+  File "C:\Users\Khai\miniconda3\envs\yolo\lib\site-packages\ultralytics\engine\trainer.py", line 320, in _setup_train
+    self.train_loader = self.get_dataloader(
+  File "C:\Users\Khai\miniconda3\envs\yolo\lib\site-packages\ultralytics\models\yolo\detect\train.py", line 102, in get_dataloader
+    return build_dataloader(
+  File "C:\Users\Khai\miniconda3\envs\yolo\lib\site-packages\ultralytics\data\build.py", line 324, in build_dataloader
+    return InfiniteDataLoader(
+  File "C:\Users\Khai\miniconda3\envs\yolo\lib\site-packages\ultralytics\data\build.py", line 68, in __init__
+    self.iterator = super().__iter__()
+  File "C:\Users\Khai\miniconda3\envs\yolo\lib\site-packages\torch\utils\data\dataloader.py", line 494, in __iter__
+    return self._get_iterator()
+  File "C:\Users\Khai\miniconda3\envs\yolo\lib\site-packages\torch\utils\data\dataloader.py", line 427, in _get_iterator
+    return _MultiProcessingDataLoaderIter(self)
+  File "C:\Users\Khai\miniconda3\envs\yolo\lib\site-packages\torch\utils\data\dataloader.py", line 1170, in __init__
+    w.start()
+  File "C:\Users\Khai\miniconda3\envs\yolo\lib\multiprocessing\process.py", line 121, in start
+    self._popen = self._Popen(self)
+  File "C:\Users\Khai\miniconda3\envs\yolo\lib\multiprocessing\context.py", line 224, in _Popen
+    return _default_context.get_context().Process._Popen(process_obj)
+  File "C:\Users\Khai\miniconda3\envs\yolo\lib\multiprocessing\context.py", line 336, in _Popen
+    return Popen(process_obj)
+  File "C:\Users\Khai\miniconda3\envs\yolo\lib\multiprocessing\popen_spawn_win32.py", line 93, in __init__
+    reduction.dump(process_obj, to_child)
+  File "C:\Users\Khai\miniconda3\envs\yolo\lib\multiprocessing\reduction.py", line 60, in dump
+    ForkingPickler(file, protocol).dump(obj)
+KeyboardInterrupt
