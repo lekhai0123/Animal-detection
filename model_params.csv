@@ -1,0 +1,5 @@
+Model,Path,Params(M),FLOPs(G)
+train_elnet12n_base_edown_dimb,runs_yolo\train_elnet12n_base_edown_dimb\weights\best.pt,0.789,6.147
+train_waid_cfg,runs_yolo\train_waid_cfg\weights\best.pt,2.569,3.243
+train_waid_p2,runs_yolo\train_waid_p2\weights\best.pt,2.586,4.527
+train_waid_r_p5,runs_yolo\train_waid_r_p5\weights\best.pt,0.757,2.407

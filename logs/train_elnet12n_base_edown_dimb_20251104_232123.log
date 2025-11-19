@@ -1,0 +1,60 @@
+=== Bắt đầu huấn luyện models/elnet/elnet12n_base_edown_dimb.yaml ===
+[DEBUG] i=0, Conv, ch=[3]
+[DEBUG] i=1, Conv, ch=[16]
+[DEBUG] i=2, DIMB_C3k2, ch=[16, 32]
+[DIMB_C3k2] i/o: 32->64, n=1, e=0.5, c_=32, shortcut=False
+[DEBUG] i=3, EDown, ch=[16, 32, 64]
+[DEBUG] i=4, DIMB_C3k2, ch=[16, 32, 64, 64]
+[DIMB_C3k2] i/o: 64->128, n=1, e=0.5, c_=64, shortcut=False
+[DEBUG] i=5, EDown, ch=[16, 32, 64, 64, 128]
+[DEBUG] i=6, DIMB_C3k2, ch=[16, 32, 64, 64, 128, 128]
+[DIMB_C3k2] i/o: 128->128, n=1, e=0.5, c_=64, shortcut=True
+[DEBUG] i=7, Upsample, ch=[16, 32, 64, 64, 128, 128, 128]
+[DEBUG] i=8, Concat, ch=[16, 32, 64, 64, 128, 128, 128, 128]
+[DEBUG] i=9, DIMB_C3k2, ch=[16, 32, 64, 64, 128, 128, 128, 128, 256]
+[DIMB_C3k2] i/o: 256->64, n=1, e=0.5, c_=32, shortcut=False
+[DEBUG] i=10, Upsample, ch=[16, 32, 64, 64, 128, 128, 128, 128, 256, 64]
+[DEBUG] i=11, Concat, ch=[16, 32, 64, 64, 128, 128, 128, 128, 256, 64, 64]
+[DEBUG] i=12, DIMB_C3k2, ch=[16, 32, 64, 64, 128, 128, 128, 128, 256, 64, 64, 128]
+[DIMB_C3k2] i/o: 128->32, n=1, e=0.5, c_=16, shortcut=False
+[DEBUG] i=13, Detect, ch=[16, 32, 64, 64, 128, 128, 128, 128, 256, 64, 64, 128, 32]
+[0] ultralytics.nn.modules.conv.Conv out=torch.Size([1, 16, 128, 128])
+[1] ultralytics.nn.modules.conv.Conv out=torch.Size([1, 32, 64, 64])
+[DEBUG] DIMB_C3k2 forward: input=torch.Size([1, 32, 64, 64]), cv1_in=32, cv1_out=32
+[2] ultralytics.nn.modules.elnet.dimb_c3k2.DIMB_C3k2 out=torch.Size([1, 64, 64, 64])
+[3] ultralytics.nn.modules.elnet.edown.EDown out=torch.Size([1, 64, 32, 32])
+[DEBUG] DIMB_C3k2 forward: input=torch.Size([1, 64, 32, 32]), cv1_in=64, cv1_out=64
+[4] ultralytics.nn.modules.elnet.dimb_c3k2.DIMB_C3k2 out=torch.Size([1, 128, 32, 32])
+[5] ultralytics.nn.modules.elnet.edown.EDown out=torch.Size([1, 128, 16, 16])
+[DEBUG] DIMB_C3k2 forward: input=torch.Size([1, 128, 16, 16]), cv1_in=128, cv1_out=64
+[6] ultralytics.nn.modules.elnet.dimb_c3k2.DIMB_C3k2 out=torch.Size([1, 128, 16, 16])
+[7] torch.nn.modules.upsampling.Upsample out=torch.Size([1, 128, 32, 32])
+[8] ultralytics.nn.modules.conv.Concat out=torch.Size([1, 256, 32, 32])
+[DEBUG] DIMB_C3k2 forward: input=torch.Size([1, 256, 32, 32]), cv1_in=256, cv1_out=32
+[9] ultralytics.nn.modules.elnet.dimb_c3k2.DIMB_C3k2 out=torch.Size([1, 64, 32, 32])
+[10] torch.nn.modules.upsampling.Upsample out=torch.Size([1, 64, 64, 64])
+[11] ultralytics.nn.modules.conv.Concat out=torch.Size([1, 128, 64, 64])
+[DEBUG] DIMB_C3k2 forward: input=torch.Size([1, 128, 64, 64]), cv1_in=128, cv1_out=16
+[12] ultralytics.nn.modules.elnet.dimb_c3k2.DIMB_C3k2 out=torch.Size([1, 32, 64, 64])
+Traceback (most recent call last):
+  File "C:\AI\Animal-detection\train_elnet12n_base_edown_dimb.py", line 54, in <module>
+    main()
+  File "C:\AI\Animal-detection\train_elnet12n_base_edown_dimb.py", line 32, in main
+    model = YOLO(MODEL)
+  File "C:\AI\Animal-detection\ultralytics-fork\ultralytics\models\yolo\model.py", line 81, in __init__
+    super().__init__(model=model, task=task, verbose=verbose)
+  File "C:\AI\Animal-detection\ultralytics-fork\ultralytics\engine\model.py", line 147, in __init__
+    self._new(model, task=task, verbose=verbose)
+  File "C:\AI\Animal-detection\ultralytics-fork\ultralytics\engine\model.py", line 255, in _new
+    self.model = (model or self._smart_load("model"))(cfg_dict, verbose=verbose and RANK == -1)  # build model
+  File "C:\AI\Animal-detection\ultralytics-fork\ultralytics\nn\tasks.py", line 419, in __init__
+    m.stride = torch.tensor([s / x.shape[-2] for x in _forward(torch.zeros(1, ch, s, s))])  # forward
+  File "C:\AI\Animal-detection\ultralytics-fork\ultralytics\nn\tasks.py", line 415, in _forward
+    return self.forward(x)[0] if isinstance(m, (Segment, YOLOESegment, Pose, OBB)) else self.forward(x)
+  File "C:\AI\Animal-detection\ultralytics-fork\ultralytics\nn\tasks.py", line 139, in forward
+    return self.predict(x, *args, **kwargs)
+  File "C:\AI\Animal-detection\ultralytics-fork\ultralytics\nn\tasks.py", line 157, in predict
+    return self._predict_once(x, profile, visualize, embed)
+  File "C:\AI\Animal-detection\ultralytics-fork\ultralytics\nn\tasks.py", line 181, in _predict_once
+    print(f"[{m.i}] {m.type} out={x.shape}")
+AttributeError: 'list' object has no attribute 'shape'

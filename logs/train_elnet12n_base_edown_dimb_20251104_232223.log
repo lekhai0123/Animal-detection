@@ -1,0 +1,59 @@
+=== Bắt đầu huấn luyện models/elnet/elnet12n_base_edown_dimb.yaml ===
+[DEBUG] i=0, Conv, ch=[3]
+[DEBUG] i=1, Conv, ch=[16]
+[DEBUG] i=2, DIMB_C3k2, ch=[16, 32]
+[DIMB_C3k2] i/o: 32->64, n=1, e=0.5, c_=32, shortcut=False
+[DEBUG] i=3, EDown, ch=[16, 32, 64]
+[DEBUG] i=4, DIMB_C3k2, ch=[16, 32, 64, 64]
+[DIMB_C3k2] i/o: 64->128, n=1, e=0.5, c_=64, shortcut=False
+[DEBUG] i=5, EDown, ch=[16, 32, 64, 64, 128]
+[DEBUG] i=6, DIMB_C3k2, ch=[16, 32, 64, 64, 128, 128]
+[DIMB_C3k2] i/o: 128->128, n=1, e=0.5, c_=64, shortcut=True
+[DEBUG] i=7, Upsample, ch=[16, 32, 64, 64, 128, 128, 128]
+[DEBUG] i=8, Concat, ch=[16, 32, 64, 64, 128, 128, 128, 128]
+[DEBUG] i=9, DIMB_C3k2, ch=[16, 32, 64, 64, 128, 128, 128, 128, 256]
+[DIMB_C3k2] i/o: 256->64, n=1, e=0.5, c_=32, shortcut=False
+[DEBUG] i=10, Upsample, ch=[16, 32, 64, 64, 128, 128, 128, 128, 256, 64]
+[DEBUG] i=11, Concat, ch=[16, 32, 64, 64, 128, 128, 128, 128, 256, 64, 64]
+[DEBUG] i=12, DIMB_C3k2, ch=[16, 32, 64, 64, 128, 128, 128, 128, 256, 64, 64, 128]
+[DIMB_C3k2] i/o: 128->32, n=1, e=0.5, c_=16, shortcut=False
+[DEBUG] i=13, Detect, ch=[16, 32, 64, 64, 128, 128, 128, 128, 256, 64, 64, 128, 32]
+[0] ultralytics.nn.modules.conv.Conv out=torch.Size([1, 16, 128, 128])
+[1] ultralytics.nn.modules.conv.Conv out=torch.Size([1, 32, 64, 64])
+[DEBUG] DIMB_C3k2 forward: input=torch.Size([1, 32, 64, 64]), cv1_in=32, cv1_out=32
+[2] ultralytics.nn.modules.elnet.dimb_c3k2.DIMB_C3k2 out=torch.Size([1, 64, 64, 64])
+[3] ultralytics.nn.modules.elnet.edown.EDown out=torch.Size([1, 64, 32, 32])
+[DEBUG] DIMB_C3k2 forward: input=torch.Size([1, 64, 32, 32]), cv1_in=64, cv1_out=64
+[4] ultralytics.nn.modules.elnet.dimb_c3k2.DIMB_C3k2 out=torch.Size([1, 128, 32, 32])
+[5] ultralytics.nn.modules.elnet.edown.EDown out=torch.Size([1, 128, 16, 16])
+[DEBUG] DIMB_C3k2 forward: input=torch.Size([1, 128, 16, 16]), cv1_in=128, cv1_out=64
+[6] ultralytics.nn.modules.elnet.dimb_c3k2.DIMB_C3k2 out=torch.Size([1, 128, 16, 16])
+[7] torch.nn.modules.upsampling.Upsample out=torch.Size([1, 128, 32, 32])
+[8] ultralytics.nn.modules.conv.Concat out=torch.Size([1, 256, 32, 32])
+[DEBUG] DIMB_C3k2 forward: input=torch.Size([1, 256, 32, 32]), cv1_in=256, cv1_out=32
+[9] ultralytics.nn.modules.elnet.dimb_c3k2.DIMB_C3k2 out=torch.Size([1, 64, 32, 32])
+[10] torch.nn.modules.upsampling.Upsample out=torch.Size([1, 64, 64, 64])
+[11] ultralytics.nn.modules.conv.Concat out=torch.Size([1, 128, 64, 64])
+[DEBUG] DIMB_C3k2 forward: input=torch.Size([1, 128, 64, 64]), cv1_in=128, cv1_out=16
+[12] ultralytics.nn.modules.elnet.dimb_c3k2.DIMB_C3k2 out=torch.Size([1, 32, 64, 64])
+[13] ultralytics.nn.modules.head.Detect out type=<class 'list'> len=3
+Traceback (most recent call last):
+  File "C:\AI\Animal-detection\train_elnet12n_base_edown_dimb.py", line 54, in <module>
+    main()
+  File "C:\AI\Animal-detection\train_elnet12n_base_edown_dimb.py", line 33, in main
+    results = model.train(
+  File "C:\AI\Animal-detection\ultralytics-fork\ultralytics\engine\model.py", line 772, in train
+    self.trainer = (trainer or self._smart_load("trainer"))(overrides=args, _callbacks=self.callbacks)
+  File "C:\AI\Animal-detection\ultralytics-fork\ultralytics\models\yolo\detect\train.py", line 63, in __init__
+    super().__init__(cfg, overrides, _callbacks)
+  File "C:\AI\Animal-detection\ultralytics-fork\ultralytics\engine\trainer.py", line 126, in __init__
+    self.device = select_device(self.args.device)
+  File "C:\AI\Animal-detection\ultralytics-fork\ultralytics\utils\torch_utils.py", line 198, in select_device
+    raise ValueError(
+ValueError: Invalid CUDA 'device=0' requested. Use 'device=cpu' or pass valid CUDA device(s) if available, i.e. 'device=0' or 'device=0,1,2,3' for Multi-GPU.
+
+torch.cuda.is_available(): False
+torch.cuda.device_count(): 0
+os.environ['CUDA_VISIBLE_DEVICES']: None
+See https://pytorch.org/get-started/locally/ for up-to-date torch install instructions if no CUDA devices are seen by torch.
+
